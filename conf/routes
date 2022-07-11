@@ -1,0 +1,31 @@
+# Routes
+# This file defines all application routes (Higher priority routes first)
+# https://www.playframework.com/documentation/latest/ScalaRouting
+# ~~~~
+
+# An example controller showing a sample home page
+GET     /                           controllers.HomeController.index()
+
+# Map static resources from the /public folder to the /assets URL path
+GET     /assets/*file               controllers.Assets.versioned(path="/public", file: Asset)
+
+#ControllerA
+GET     /controllerA                controllers.ControllerA.getAll
+GET     /controllerA/:itemId        controllers.ControllerA.getById(itemId: Long)
+PUT     /controllerA/:itemId        controllers.ControllerA.updateItem(itemId: Long)
+DELETE  /controllerA/:itemId        controllers.ControllerA.deleteItem(itemId: Long)
+POST    /controllerA                controllers.ControllerA.addItem
+
+#ControllerB
+GET     /controllerB                controllers.ControllerB.getAll
+GET     /controllerB/:itemId        controllers.ControllerB.getById(itemId: Long)
+PUT     /controllerB/:itemId        controllers.ControllerB.updateItem(itemId: Long)
+DELETE  /controllerB/:itemId        controllers.ControllerB.deleteItem(itemId: Long)
+POST    /controllerB                controllers.ControllerB.addItem
+
+#ControllerC
+GET     /controllerC                controllers.ControllerC.getAll
+GET     /controllerC/:itemId        controllers.ControllerC.getById(itemId: Long)
+PUT     /controllerC/:itemId        controllers.ControllerC.updateItem(itemId: Long)
+DELETE  /controllerC/:itemId        controllers.ControllerC.deleteItem(itemId: Long)
+POST    /controllerC                controllers.ControllerC.addItem

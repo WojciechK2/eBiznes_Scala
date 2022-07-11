@@ -1,0 +1,30 @@
+@()
+
+@main("Simple CRUD Controllers in Scala") {
+  <h1>Hi!</h1>
+  <h2>This code presents 3 simple CRUD Controllers written in Scala language for Play Framework</h2>
+  <h3>Controller A</h3>
+  <p>Show all (GET method); Path: /controllerA </p>
+  <p>Show by id (GET method); Path: /controllerA/id </p>
+  <p>Update (PUT method); Path: /controllerA/id </p>
+  <p>Delete (DELETE method); Path: /controllerA/id </p>
+  <p>Add (POST method) Path: /controllerA </p>
+  <h3>Controller B</h3>
+  <p>Show all (GET method); Path: /controllerB </p>
+  <p>Show by id (GET method); Path: /controllerB/id </p>
+  <p>Update (PUT method); Path: /controllerB/id </p>
+  <p>Delete (DELETE method); Path: /controllerB/id </p>
+  <p>Add (POST method) Path: /controllerB </p>
+  <h3>Controller C</h3>
+  <p>Show all (GET method); Path: /controllerC </p>
+  <p>Show by id (GET method); Path: /controllerC/id </p>
+  <p>Update (PUT method); Path: /controllerC/id </p>
+  <p>Delete (DELETE method); Path: /controllerC/id </p>
+  <p>Add (POST method) Path: /controllerC </p>
+  <h3>Testowanie: </h3>
+  <p>SHOW ALL: <code>curl -v localhost:9000/controllerA</code> </p>
+  <p>GET BY ID: <code>curl -v localhost:9000/controllerA/1</code></p>
+  <p>UPDATE: <code>curl -vvvv -X PUT -H "Content-Type: application/json" -d '{"value":"ABCD"}' localhost:9000/controllerA/5</code></p>
+  <p>DELETE: <code>curl -vvvv -X DELETE localhost:9000/controllerA/5</code></p>
+  <p>ADD (POST): <code>curl -vvv -H "content-Type: application/json" -X POST -d '{"value":"nowiutki element"}' localhost:9000/controllerA</code></p>
+}
