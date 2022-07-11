@@ -20,7 +20,7 @@ class ControllerA @Inject()(val controllerComponents: ControllerComponents) exte
   implicit val itemsList = Json.format[ControllerAListItem]
   implicit val newItem = Json.format[NewControllerAListItem]
 
-  def getAll(): Action[AnyContent] = Action {
+  def getAll: Action[AnyContent] = Action {
     if(ItemsList.isEmpty) {
       NoContent
     } else {
@@ -28,7 +28,7 @@ class ControllerA @Inject()(val controllerComponents: ControllerComponents) exte
     }
   }
 
-  def getById(itemId: Long) = Action {
+  def getById(itemId: Long): Action[AnyContent] = Action {
     val item = ItemsList.find(_.id == itemId)
     item match {
       case Some(item) => Ok(Json.toJson(item))
@@ -36,20 +36,20 @@ class ControllerA @Inject()(val controllerComponents: ControllerComponents) exte
     }
   }
 
-  def updateItem(itemId: Long) = Action(parse.json) { implicit request =>
+  def updateItem(itemId: Long): Action[JsValue] = Action(parse.json) { implicit request =>
     val item = ItemsList.find(_.id == itemId)
     val content: JsValue = request.body
     item match {
       case Some(item) =>
         val value = (content \ "value").as[String]
-        val newItem = item.copy(id = itemId,value = value)
+        val newItem = item.copy(id = itemId, value = value)
         ItemsList.update(ItemsList.indexOf(item), newItem)
         Accepted(Json.toJson(newItem))
       case None => NotFound
     }
   }
 
-  def deleteItem(itemId: Long) = Action {
+  def deleteItem(itemId: Long): Action[AnyContent] = Action {
     val item = ItemsList.find(_.id == itemId)
     item match {
       case Some(item) =>
@@ -59,7 +59,7 @@ class ControllerA @Inject()(val controllerComponents: ControllerComponents) exte
     }
   }
 
-  def addItem = Action { implicit request =>
+  def addItem: Action[AnyContent] = Action { implicit request =>
 
     val content = request.body
     val jsonContent = content.asJson
